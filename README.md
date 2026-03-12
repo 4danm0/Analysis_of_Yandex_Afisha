@@ -81,6 +81,20 @@
 - **Фильтрация выбросов:** по 99-му перцентилю для `revenue_rub` (удалено < 3% строк)
 - **Удаление дублей:** удалены дублирующие заказы с разницей менее 2 минут (~6% строк)
 
+#### Распределение категориальных признаков
+
+![Nominal columns distribution](images/01_nominal_columns_distribution.png)
+
+#### Распределение выручки и количества билетов (до фильтрации)
+
+![Revenue histogram before filter](images/02_revenue_rub_histogram.png)
+
+![Boxplots revenue and tickets](images/03_boxplots_revenue_tickets.png)
+
+#### Распределение выручки после фильтрации по 99-му перцентилю
+
+![Filtered revenue histogram](images/04_filtered_revenue_histogram.png)
+
 ### 3. 👤 Создание профиля пользователя
 
 Для каждого пользователя рассчитаны агрегированные признаки:
@@ -93,6 +107,10 @@
 - Среднее время между заказами
 - Бинарные флаги `is_two` (2+ заказа) и `is_five` (5+ заказов)
 
+#### Распределение пользователей по количеству заказов
+
+![Total orders distribution](images/05_total_orders_distribution.png)
+
 ### 4. 🔍 Исследовательский анализ данных
 
 #### 4.1. Признаки первого заказа и их связь с возвращением
@@ -101,20 +119,62 @@
 - Анализ возвратов по сегментам
 - Проверка продуктовых гипотез
 
+#### Доля возвратов по типу мероприятия, устройству и оператору
+
+![Return rate by event type, device, service](images/06_return_rate_by_event_type_device_service.png)
+
+#### Гипотеза 1: Спорт vs Концерты
+
+![Hypothesis 1 sport vs concert](images/07_hypothesis1_sport_vs_concert.png)
+
+#### Гипотеза 2: Доля возвратов по регионам (топ-10)
+
+![Hypothesis 2 return rate by region](images/08_hypothesis2_return_rate_by_region.png)
+
 #### 4.2. Поведение через показатели выручки и состава заказа
 
 - Сравнение распределений средней выручки между группами (1 заказ vs 2+)
 - Анализ влияния среднего количества билетов на повторные покупки
+
+#### Распределение средней выручки: разовые vs возвращающиеся пользователи
+
+![Revenue distribution one-time vs returning](images/09_revenue_distribution_one_vs_returning.png)
+
+![Revenue distribution filtered](images/10_revenue_distribution_filtered.png)
+
+#### Сравнение выручки: группы 2–4 заказа vs 5+ заказов
+
+![Revenue groups 2-4 vs 5+](images/11_revenue_groups_2_4_vs_5plus.png)
+
+#### Доля повторных покупок по сегментам среднего числа билетов
+
+![Tickets segment return rate](images/12_tickets_segment_return_rate.png)
 
 #### 4.3. Временные характеристики и их влияние на удержание
 
 - Влияние дня недели первой покупки на вероятность возврата
 - Анализ среднего интервала между заказами (группы 2–4 и 5+)
 
+#### Доля повторных покупок по дню недели первого заказа
+
+![Return rate by day of week](images/13_return_rate_by_day_of_week.png)
+
+#### Распределение интервалов между заказами: группы 2–4 vs 5+
+
+![Interval between orders distribution](images/14_interval_between_orders_distribution.png)
+
 #### 4.4. Корреляционный анализ (phi_k)
 
 - Расчёт универсального коэффициента корреляции `phi_k` между признаками профиля и числом заказов
 - Визуализация тепловой карты корреляций
+
+#### Тепловая карта корреляций phi_k
+
+![PhiK correlation heatmap](images/15_phik_correlation_heatmap.png)
+
+#### Корреляция phi_k по сегментам числа заказов
+
+![PhiK correlation by segment](images/16_phik_correlation_by_segment.png)
 
 ---
 
@@ -253,6 +313,7 @@ Analysis_of_Yandex_Afisha/
 ├── requirements.txt        # Зависимости проекта
 ├── .gitignore              # Исключения для Git
 ├── .env                    # Параметры подключения (не в репозитории)
+├── images/                 # Графики из ноутбука
 └── README.md               # Описание проекта
 ```
 
